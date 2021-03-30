@@ -42,3 +42,16 @@ sprintf("Die Wahlbeteiligung liegt voraussichtlich bei %f",uhbpwbt)
 
 p <- p + geom_point(aes(x =uhbpwbt, y=18),shape=4,size=5,color='#D10E04')
 p
+
+
+# Objective : Aufgabe 13
+# Besteht zwischen der in Tab.4.2 gegebenen Wahlbeteiligung der
+# Wienerinnen und Wiener und der am Wahltag vorherrschenden Temperatur eine
+# hohe Korrelation?
+# Wie groß ist der Korrelationskoeffizient?
+
+korellationskoeffizient <- cor(dataset$temperatur,dataset$wahlbeteiligung)
+sprintf("Der Korellationskoeffizient lautet %f",korrelationskoeffizient)
+
+# Bei einem Korellationskoeffizienten von -0.8497998 handelt es sich um einen starken negativen linearen zusammenhang
+
