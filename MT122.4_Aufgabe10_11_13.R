@@ -29,7 +29,7 @@ p <- p + ylab("Temperatur")
 p <- p + geom_smooth(aes(x=wahlbeteiligung, y=temperatur ),dataset,method='lm', se=0)
 #p
 
-# Objective : Aufgabe 10
+# Objective : Aufgabe 11
 # Die Mittagstemperatur amWahltag (25.4.2010) betrug 18◦.Welche Wahlbeteiligung war bei dieser Temperatur zu erwarten?
 
 estWahlbeteiligung <- function(temp,niveaufaktor , koeffizient) {
