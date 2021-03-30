@@ -18,6 +18,7 @@ niveaufaktor <- k$coefficients[1]
 sprintf("Koeffizient von Y~X lautet %f",koeffizient)
 sprintf("Der Niveaufaktor lautet %f",niveaufaktor)
 
+library(ggplot2)
 # Bubble Plot
 p <- ggplot(dataset, aes(x=wahlbeteiligung, y=temperatur))
 p <- p + geom_point(alpha=0.7)
@@ -26,7 +27,7 @@ p <- p + ggtitle("Wahlen Wien - Wahlbeteiligung")
 p <- p + xlab("Wahlbeteiligung")
 p <- p + ylab("Temperatur")
 # Regressionsgerade hinzufügen
-p <- p + geom_smooth(aes(x=wahlbeteiligung, y=temperatur ),dataset,method='lm', se=0)
+p <- p + geom_smooth(aes(x=wahlbeteiligung, y=temperatur ),dataset,method='lm', se=FALSE)
 #p
 
 # Objective : Aufgabe 11
