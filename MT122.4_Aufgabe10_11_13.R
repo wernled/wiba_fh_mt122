@@ -42,6 +42,8 @@ sprintf("Die Wahlbeteiligung liegt voraussichtlich bei %f",uhbpwbt)
 
 p <- p + geom_point(aes(x =uhbpwbt, y=18),shape=4,size=5,color='#D10E04')
 p
+ggsave(filename = "./MT122.4_Aufgabe11_Wahlbeteiligung.jpg", plot=p,device="jpeg" )
+
 
 
 # Objective : Aufgabe 13
