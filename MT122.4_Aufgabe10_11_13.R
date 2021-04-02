@@ -21,28 +21,24 @@ sprintf("Der Niveaufaktor lautet %f",niveaufaktor)
 #install.packages("ggplot2")
 library(ggplot2)
 
-#Pretty Fonts anyone?
-#install.packages("showtext")
-#install.packages("jsonlite")
-#install.packages("curl")
+# install.packages('showtext', dependencies = TRUE)
 library(showtext)
-#font_add_google("Rubik", "rubik")
-#font_add_google("Karla", "karla")
+font_add("Comic Sans MS", "comic.ttf")
 ## Automatically use showtext to render text
 showtext_auto()
 
 
 # Bubble Plot
-p <- ggplot(dataset, aes(x=wahlbeteiligung, y=temperatur))
+p <- ggplot(dataset, aes(y=wahlbeteiligung, x=temperatur))
 p <- p + geom_point(alpha=0.7)
 p <- p + theme_classic()
 p <- p + ggtitle("Wahlen Wien - Wahlbeteiligung")
 p <- p + theme(plot.title = element_text(size=22))
-p <- p + theme(text=element_text(size=16,  family="rubik"))
-p <- p + xlab("Wahlbeteiligung")
-p <- p + ylab("Temperatur")
+p <- p + theme(text=element_text(size=16,  family="Comic Sans MS"))
+p <- p + ylab("Wahlbeteiligung")
+p <- p + xlab("Temperatur")
 # Regressionsgerade hinzufügen
-p <- p + geom_smooth(aes(x=wahlbeteiligung, y=temperatur ),dataset,method='lm', se=FALSE)
+p <- p + geom_smooth(aes(y=wahlbeteiligung, x=temperatur ),dataset,method='lm', se=FALSE)
 #p
 
 # Objective : Aufgabe 11
@@ -56,8 +52,8 @@ estWahlbeteiligung <- function(temp,niveaufaktor , koeffizient) {
 uhbpwbt <- estWahlbeteiligung(18, niveaufaktor , koeffizient)
 sprintf("Die Wahlbeteiligung liegt voraussichtlich bei %f",uhbpwbt)
 
-p <- p + geom_point(aes(x = uhbpwbt, y=18),shape=4,size=5,color='#D10E04')
-p <- p + geom_text(aes(x = uhbpwbt + 0.03 , y = 18, label=sprintf("BPW Beteiligung %f %%",uhbpwbt)))
+p <- p + geom_point(aes(y = uhbpwbt, x=18),shape=4,size=5,color='#D10E04')
+p <- p + geom_text(aes(y = uhbpwbt, x = 18 +1, label=sprintf("BPW Beteiligung %f %%",uhbpwbt)))
 
 p
 ggsave(filename = "./MT122.4_Aufgabe11_Wahlbeteiligung.jpg", plot=p,device="jpeg" )
@@ -71,7 +67,7 @@ windowsFonts()
 # hohe Korrelation?
 # Wie groß ist der Korrelationskoeffizient?
 
-korellationskoeffizient <- cor(dataset$temperatur,dataset$wahlbeteiligung)
+korrelationskoeffizient <- cor(dataset$temperatur,dataset$wahlbeteiligung)
 sprintf("Der Korellationskoeffizient lautet %f",korrelationskoeffizient)
 
 # Bei einem Korellationskoeffizienten von -0.8497998 handelt es sich um einen starken negativen linearen zusammenhang
